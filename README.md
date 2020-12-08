@@ -14,7 +14,7 @@ To get this project up and running locally, you must have node installed on your
 
 ## Live Link
 
-
+Here is the live [link](https://my-calculator-sercan.herokuapp.com/)
 
 ## Getting Started
 
