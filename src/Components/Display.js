@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-function Display(props) {
+const Display = props => {
   const { result } = props;
   return (
     <>
       {result}
     </>
   );
-}
+};
 
 Display.propTypes = {
   result: PropTypes.string,
