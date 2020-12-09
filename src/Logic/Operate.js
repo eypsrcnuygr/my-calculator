@@ -1,4 +1,4 @@
-import Big from 'big.js';
+const Big = require('big.js');
 
 const Operate = (num1 = null, num2 = null, operation) => {
   const operations = ['+', '-', 'X', '/', '%'];
@@ -16,9 +16,9 @@ const Operate = (num1 = null, num2 = null, operation) => {
       result = new Big(num1).div(100);
     }
   } else if (operation === '=') {
-    return result;
+    return result.toString();
   }
-  return result;
+  return result.toString();
 };
 
 export default Operate;

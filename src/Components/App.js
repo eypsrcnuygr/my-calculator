@@ -23,8 +23,6 @@ class App extends React.Component {
       // next: calculatedObj.next,
       // operation: calculatedObj.operation,
     }));
-    // eslint-disable-next-line no-console
-    console.log(this.state.total);
   }
 
   render() {

@@ -4,8 +4,9 @@ const Calculate = (calculatorObj, buttonName) => {
   let { total = 0, next, operation } = calculatorObj;
   const operations = ['+', '-', 'X', '/', '%'];
   operation = buttonName;
+
   if (operations.includes(buttonName)) {
-    total = Operate(total, next, buttonName);
+    total = Operate(total, next, operation);
   }
   if (buttonName === '+/-') {
     if (total) {
@@ -27,7 +28,7 @@ const Calculate = (calculatorObj, buttonName) => {
   if (buttonName === '.') {
     next = next.concat(buttonName);
   }
-  return { calculatorObj };
+  return { total, next, operation };
 };
 
 export default Calculate;
