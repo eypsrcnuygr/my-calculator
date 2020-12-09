@@ -1,7 +1,7 @@
 import Operate from './Operate';
 
 const Calculate = (calculatorObj, buttonName) => {
-  let { total, next, operation } = calculatorObj;
+  let { total = 0, next, operation } = calculatorObj;
   const operations = ['+', '-', 'X', '/', '%'];
   operation = buttonName;
   if (operations.includes(buttonName)) {
