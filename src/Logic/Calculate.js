@@ -6,7 +6,6 @@ const Calculate = (calculatorObj, buttonName) => {
   operation = buttonName;
   if (operations.includes(buttonName)) {
     total = Operate(total, next, buttonName);
-    return total;
   }
   if (buttonName === '+/-') {
     if (total) {
