@@ -25,6 +25,9 @@ const Calculate = (calculatorObj, buttonName) => {
     total = null;
     next = null;
   }
+  if (buttonName === '.') {
+    next = next.concat(buttonName);
+  }
   return { calculatorObj };
 };
 
