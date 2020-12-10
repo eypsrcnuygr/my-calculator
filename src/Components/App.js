@@ -51,7 +51,7 @@ class App extends React.Component {
     && this.state.total !== null) {
       this.setState(() => ({ next: e.target.value }));
     }
-    if (total && next && operation === e.target.value
+    if (total && next && operations.includes(operation) && e.target.value === '='
     ) {
       this.handleClick();
       console.log(operation);
