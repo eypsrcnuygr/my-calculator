@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import '../App.css';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import Calculate from '../Logic/Calculate';
+import '../Calculator.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,19 +17,6 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // getSnapshotBeforeUpdate(prevState) {
-  //   if (this.state.operation !== prevState.operation && this.state.total && this.state.next) {
-  //     return this.state;
-  //   }
-  //   return null;
-  // }
-
-  // componentDidUpdate(prevState) {
-  //   if (prevState.operation === '=') {
-  //     this.handleClick();
-  //   }
-  // }
-
   handleChange(e) {
     const {
       total, next, operation,
@@ -40,13 +26,13 @@ class App extends React.Component {
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
     } else if (numbers.includes(e.target.value)
-    && !this.state.next
-    && !this.state.operation) {
+    && !next
+    && !operation) {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ total: total + variable.toString() }));
     } else if (numbers.includes(e.target.value)
-    && this.state.total
+    && total
     && operation !== '.') {
       const variable = [];
       variable.push(e.target.value);
@@ -92,7 +78,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Display result={`The total is ${total}, the next is ${next} and the operation is ${operation}`} />
+        <Display result={`The total is ${total},   the next is ${next},   and the operation is ${operation}`} />
         <ButtonPanel ClickHandler={this.handleChange} />
       </div>
     );

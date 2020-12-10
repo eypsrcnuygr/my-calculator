@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(245, 74, 103);
+  
+}
+
+button {
+  background-color: aqua;
+  font-weight: 800;
+  font-size: 1.2rem;
+  width: 10%;
+  height: 75px;
+}
+
+button:hover {
+  background-color: burlywood;
+}
+
+#root :first-child {
+text-align: center;
+}
+
+p {
+  color: beige;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
