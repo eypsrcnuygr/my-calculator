@@ -32,26 +32,22 @@ class App extends React.Component {
   // }
 
   handleChange(e) {
-    const { total, next, operation } = this.state;
+    const {
+      total, next, operation,
+    } = this.state;
     const operations = ['+', '-', 'X', '/', '%', '='];
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
     } else if (numbers.includes(e.target.value)
-    && this.state.next === ''
-    && this.state.total === '') {
+    && !this.state.next
+    && !this.state.operation) {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ total: total + variable.toString() }));
     } else if (numbers.includes(e.target.value)
-    && this.state.next === null
-    && this.state.total !== null) {
-      const variable = [];
-      variable.push(e.target.value);
-      this.setState(() => ({ next: next + variable.toString() }));
-    } else if (numbers.includes(e.target.value)
-    && this.state.next !== null
-    && this.state.total !== null) {
+    && this.state.total
+    && !operations.includes(e.target.value)) {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ next: next + variable.toString() }));

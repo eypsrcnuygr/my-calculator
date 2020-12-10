@@ -17,8 +17,8 @@ const Calculate = (calculatorObj, buttonName) => {
     return { total, next, operation };
   }
   if (buttonName === 'AC') {
-    total = null;
-    next = null;
+    total = '';
+    next = '';
     operation = null;
     return { total, next, operation };
   }
