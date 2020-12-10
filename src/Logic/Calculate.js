@@ -18,8 +18,7 @@ const Calculate = (calculatorObj, buttonName) => {
   }
   if (buttonName === '=') {
     total = Operate(total, next, buttonName);
-    next = null;
-    return total;
+    return { total, next, operation };
   }
   if (buttonName === 'AC') {
     total = null;
