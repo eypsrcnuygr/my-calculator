@@ -20,7 +20,6 @@ const Calculate = (calculatorObj, buttonName) => {
     return { total, next, operation };
   }
   if (buttonName === 'AC') {
-    console.log(`THe next is ${next}`);
     if (next === '') {
       total = '';
     } else {
@@ -29,7 +28,7 @@ const Calculate = (calculatorObj, buttonName) => {
     operation = 'AC';
   }
   if (buttonName === '.') {
-    if (operation) {
+    if (next !== '') {
       next = next.concat(buttonName);
     } else {
       total = total.concat(buttonName);

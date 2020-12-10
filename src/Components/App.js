@@ -47,7 +47,7 @@ class App extends React.Component {
       this.setState(() => ({ total: total + variable.toString() }));
     } else if (numbers.includes(e.target.value)
     && this.state.total
-    && !operations.includes(e.target.value)) {
+    && operation !== '.') {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ next: next + variable.toString() }));
@@ -55,6 +55,14 @@ class App extends React.Component {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ total: total + variable.toString() }));
+    } else if (operation === '.' && !next) {
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ total: total + variable.toString() }));
+    } else if (total && next && operation === '.') {
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ next: next + variable.toString() }));
     }
     if (total && next && operations.includes(operation) && e.target.value === '='
     ) {
@@ -64,24 +72,14 @@ class App extends React.Component {
     || (total && e.target.value === '+/-')
     || (total && e.target.value === '.')
     ) {
-      console.log(`the target : ${e.currentTarget.value}`);
       this.setState({ operation: e.target.value }, () => this.handleClick());
     }
   }
 
   handleClick() {
     const { total, next, operation } = this.state;
-    // if (total === null) {
-    //   total = `${total}`.replace(/null/g, '');
-    // }
-    // if (next === null) {
-    //   next = `${next}`.replace(/null/g, '');
-    // }
-    // if (operation === null) {
-    //   operation = `${operation}`.replace(/null/g, '');
-    // }
     const calculatedObj = Calculate({ total, next }, operation);
-    console.log(`THe calculated Object's operation is ${calculatedObj.operation}`);
+
     this.setState(() => ({
       total: calculatedObj.total,
       next: calculatedObj.next,
@@ -92,10 +90,6 @@ class App extends React.Component {
   render() {
     const { total, next, operation } = this.state;
 
-    console.log('----------------------');
-    console.log(total);
-    console.log(next);
-    console.log(operation);
     return (
       <div>
         <Display result={`The total is ${total}, the next is ${next} and the operation is ${operation}`} />
