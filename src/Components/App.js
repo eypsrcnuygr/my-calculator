@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: null,
-      next: null,
+      total: '',
+      next: '',
       operation: null,
     };
     this.handleClick = this.handleClick.bind(this);
@@ -33,23 +33,28 @@ class App extends React.Component {
 
   handleChange(e) {
     const { total, next, operation } = this.state;
-    const operations = ['+', '-', 'X', '/', '%', '=', 'AC'];
+    const operations = ['+', '-', 'X', '/', '%', '='];
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
-      console.log(`Benim için yap şu işi ${e.target.value}`);
     } else if (numbers.includes(e.target.value)
-    && this.state.next === null
-    && this.state.total === null) {
-      this.setState(() => ({ total: e.target.value }));
+    && this.state.next === ''
+    && this.state.total === '') {
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ total: total + variable.toString() }));
     } else if (numbers.includes(e.target.value)
     && this.state.next === null
     && this.state.total !== null) {
-      this.setState(() => ({ next: e.target.value }));
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ next: next + variable.toString() }));
     } else if (numbers.includes(e.target.value)
     && this.state.next !== null
     && this.state.total !== null) {
-      this.setState(() => ({ next: e.target.value }));
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ next: next + variable.toString() }));
     }
     if (total && next && operations.includes(operation) && e.target.value === '='
     ) {
@@ -59,7 +64,6 @@ class App extends React.Component {
     || (total && next && operations.includes(operation) && e.target.value === '+/-')
     || (total && next && operations.includes(operation) && e.target.value === '.')
     ) {
-      console.log(`The target is ${e.target.value}`);
       this.setState({ operation: e.target.value }, () => this.handleClick());
     }
   }
