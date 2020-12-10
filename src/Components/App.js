@@ -33,11 +33,11 @@ class App extends React.Component {
 
   handleChange(e) {
     const { total, next, operation } = this.state;
-    const operations = ['+', '-', 'X', '/', '%', '='];
+    const operations = ['+', '-', 'X', '/', '%', '=', 'AC'];
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
-      console.log(`Sercan ${e.target.value}`);
+      console.log(`Benim için yap şu işi ${e.target.value}`);
     } else if (numbers.includes(e.target.value)
     && this.state.next === null
     && this.state.total === null) {
@@ -54,7 +54,11 @@ class App extends React.Component {
     if (total && next && operations.includes(operation) && e.target.value === '='
     ) {
       this.handleClick();
-      console.log(operation);
+    }
+    if (total && next && operations.includes(operation) && e.target.value === 'AC'
+    ) {
+      console.log(`The target is ${e.target.value}`);
+      this.setState({ operation: e.target.value }, () => this.handleClick());
     }
   }
 
@@ -70,6 +74,7 @@ class App extends React.Component {
     //   operation = `${operation}`.replace(/null/g, '');
     // }
     const calculatedObj = Calculate({ total, next }, operation);
+    console.log(`THe calculated Object's operation is ${calculatedObj.operation}`);
     this.setState(() => ({
       total: calculatedObj.total,
       next: calculatedObj.next,
@@ -85,11 +90,11 @@ class App extends React.Component {
     console.log(next);
     console.log(operation);
     if (next && !operation) {
-      ConditionalDisplay = <Display result={next} onChange={this.handleClick} />;
+      ConditionalDisplay = <Display result={next} />;
     } else if (next && operation && !total) {
-      ConditionalDisplay = <Display result={operation} onChange={this.handleClick} />;
+      ConditionalDisplay = <Display result={operation} />;
     } else {
-      ConditionalDisplay = <Display result={total} onChange={this.handleClick} />;
+      ConditionalDisplay = <Display result={total} />;
     }
     return (
       <div>

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
 const Display = props => {
-  const { onChange, result } = props;
+  const { result } = props;
   return (
     <>
-      <p onChange={e => { onChange(e); }}>{result}</p>
+      <p>{result}</p>
 
     </>
   );
@@ -12,12 +12,10 @@ const Display = props => {
 
 Display.propTypes = {
   result: PropTypes.string,
-  onChange: PropTypes.func,
 };
 
 Display.defaultProps = {
   result: 'O',
-  onChange: null,
 };
 
 export default Display;

@@ -16,9 +16,6 @@ const Operate = (num1 = null, num2 = null, operation) => {
     } else if (operation === '%') {
       result = new Big(num1).div(100);
     }
-  } else if (operation === '=') {
-    console.log(`Yayyyy ${operation}`);
-    return result.toString();
   }
   return result.toString();
 };
