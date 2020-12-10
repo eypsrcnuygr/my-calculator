@@ -55,7 +55,9 @@ class App extends React.Component {
     ) {
       this.handleClick();
     }
-    if (total && next && operations.includes(operation) && e.target.value === 'AC'
+    if ((total && next && operations.includes(operation) && e.target.value === 'AC')
+    || (total && next && operations.includes(operation) && e.target.value === '+/-')
+    || (total && next && operations.includes(operation) && e.target.value === '.')
     ) {
       console.log(`The target is ${e.target.value}`);
       this.setState({ operation: e.target.value }, () => this.handleClick());

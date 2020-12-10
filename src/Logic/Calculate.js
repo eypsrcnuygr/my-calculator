@@ -8,11 +8,9 @@ const Calculate = (calculatorObj, buttonName) => {
     total = Operate(total, next, operation);
   }
   if (buttonName === '+/-') {
-    if (next) {
-      total = Operate(next, -1, 'X');
-    } else {
-      next = Operate(total, -1, 'X');
-    }
+    total = Operate(total, -1, 'X');
+    next = Operate(next, -1, 'X');
+
     return { total, next, operation };
   }
   if (operation === '=') {
