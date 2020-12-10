@@ -25,18 +25,19 @@ class App extends React.Component {
   //   return null;
   // }
 
-  // componentDidUpdate(prevState, snapshot) {
-  //   if (snapshot.total !== null) {
+  // componentDidUpdate(prevState) {
+  //   if (prevState.operation === '=') {
   //     this.handleClick();
   //   }
   // }
 
   handleChange(e) {
     const { total, next, operation } = this.state;
-    const operations = ['+', '-', 'X', '/', '%'];
+    const operations = ['+', '-', 'X', '/', '%', '='];
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
+      console.log(`Sercan ${e.target.value}`);
     } else if (numbers.includes(e.target.value)
     && this.state.next === null
     && this.state.total === null) {
@@ -55,22 +56,19 @@ class App extends React.Component {
       this.handleClick();
       console.log(operation);
     }
-    if (total && next && operation === '=') {
-      this.handleClick();
-    }
   }
 
   handleClick() {
-    let { total, next, operation } = this.state;
-    if (total === null) {
-      total = `${total}`.replace(/null/g, '');
-    }
-    if (next === null) {
-      next = `${next}`.replace(/null/g, '');
-    }
-    if (operation === null) {
-      operation = `${operation}`.replace(/null/g, '');
-    }
+    const { total, next, operation } = this.state;
+    // if (total === null) {
+    //   total = `${total}`.replace(/null/g, '');
+    // }
+    // if (next === null) {
+    //   next = `${next}`.replace(/null/g, '');
+    // }
+    // if (operation === null) {
+    //   operation = `${operation}`.replace(/null/g, '');
+    // }
     const calculatedObj = Calculate({ total, next }, operation);
     this.setState(() => ({
       total: calculatedObj.total,
@@ -82,6 +80,7 @@ class App extends React.Component {
   render() {
     const { total, next, operation } = this.state;
     let ConditionalDisplay;
+    console.log('----------------------');
     console.log(total);
     console.log(next);
     console.log(operation);

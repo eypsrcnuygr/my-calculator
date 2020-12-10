@@ -4,7 +4,8 @@ const Calculate = (calculatorObj, buttonName) => {
   let { total = 0, next, operation } = calculatorObj;
   const operations = ['+', '-', 'X', '/', '%'];
   operation = buttonName;
-
+  // const memo = [...buttonName];
+  console.log(`The memo is ${operation}`);
   if (operations.includes(buttonName)) {
     total = Operate(total, next, operation);
   }
@@ -16,8 +17,7 @@ const Calculate = (calculatorObj, buttonName) => {
     }
     return { total, next, operation };
   }
-  if (buttonName === '=') {
-    total = Operate(total, next, buttonName);
+  if (operation === '=') {
     return { total, next, operation };
   }
   if (buttonName === 'AC') {
