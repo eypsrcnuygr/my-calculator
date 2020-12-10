@@ -9,10 +9,10 @@ const Calculate = (calculatorObj, buttonName) => {
     total = Operate(total, next, operation);
   }
   if (buttonName === '+/-') {
-    if (total) {
-      total = Operate(total, -1, 'X');
-    } else if (next) {
-      next = Operate(next, -1, 'X');
+    if (next) {
+      total = Operate(next, -1, 'X');
+    } else {
+      next = Operate(total, -1, 'X');
     }
     return { total, next, operation };
   }

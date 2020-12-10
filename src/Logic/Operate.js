@@ -1,4 +1,4 @@
-const Big = require('big.js');
+import Big from 'big.js';
 
 const Operate = (num1 = null, num2 = null, operation) => {
   const operations = ['+', '-', 'X', '/', '%'];

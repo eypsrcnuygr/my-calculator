@@ -1,20 +1,23 @@
 import PropTypes from 'prop-types';
 
 const Display = props => {
-  const { result } = props;
+  const { onChange, result } = props;
   return (
     <>
-      {result}
+      <p onChange={e => { onChange(e); }}>{result}</p>
+
     </>
   );
 };
 
 Display.propTypes = {
   result: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 Display.defaultProps = {
   result: 'O',
+  onChange: null,
 };
 
 export default Display;
