@@ -51,15 +51,20 @@ class App extends React.Component {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ next: next + variable.toString() }));
+    } else if (operation === 'AC' && !total) {
+      const variable = [];
+      variable.push(e.target.value);
+      this.setState(() => ({ total: total + variable.toString() }));
     }
     if (total && next && operations.includes(operation) && e.target.value === '='
     ) {
       this.handleClick();
     }
-    if ((total && next && operations.includes(operation) && e.target.value === 'AC')
-    || (total && next && operations.includes(operation) && e.target.value === '+/-')
-    || (total && next && operations.includes(operation) && e.target.value === '.')
+    if ((total && e.target.value === 'AC')
+    || (total && e.target.value === '+/-')
+    || (total && e.target.value === '.')
     ) {
+      console.log(`the target : ${e.currentTarget.value}`);
       this.setState({ operation: e.target.value }, () => this.handleClick());
     }
   }
@@ -86,21 +91,14 @@ class App extends React.Component {
 
   render() {
     const { total, next, operation } = this.state;
-    let ConditionalDisplay;
+
     console.log('----------------------');
     console.log(total);
     console.log(next);
     console.log(operation);
-    if (next && !operation) {
-      ConditionalDisplay = <Display result={next} />;
-    } else if (next && operation && !total) {
-      ConditionalDisplay = <Display result={operation} />;
-    } else {
-      ConditionalDisplay = <Display result={total} />;
-    }
     return (
       <div>
-        {ConditionalDisplay}
+        <Display result={`The total is ${total}, the next is ${next} and the operation is ${operation}`} />
         <ButtonPanel ClickHandler={this.handleChange} />
       </div>
     );

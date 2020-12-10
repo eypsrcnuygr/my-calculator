@@ -8,8 +8,11 @@ const Calculate = (calculatorObj, buttonName) => {
     total = Operate(total, next, operation);
   }
   if (buttonName === '+/-') {
-    total = Operate(total, -1, 'X');
-    next = Operate(next, -1, 'X');
+    if (!next) {
+      total = Operate(total, -1, 'X');
+    } else if (total && next) {
+      next = Operate(next, -1, 'X');
+    }
 
     return { total, next, operation };
   }
@@ -17,13 +20,20 @@ const Calculate = (calculatorObj, buttonName) => {
     return { total, next, operation };
   }
   if (buttonName === 'AC') {
-    total = '';
-    next = '';
-    operation = null;
-    return { total, next, operation };
+    console.log(`THe next is ${next}`);
+    if (next === '') {
+      total = '';
+    } else {
+      next = '';
+    }
+    operation = 'AC';
   }
   if (buttonName === '.') {
-    next = next.concat(buttonName);
+    if (operation) {
+      next = next.concat(buttonName);
+    } else {
+      total = total.concat(buttonName);
+    }
   }
   return { total, next, operation };
 };
