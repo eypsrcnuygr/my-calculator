@@ -16,7 +16,7 @@ const ButtonPanel = props => {
           <Button
             name={element}
             key={firstGroup.indexOf(element)}
-            handleClick={props.ClickHandler}
+            handleClick={element => props.clickHandler(element)}
           />
         ))}
       </div>
@@ -25,7 +25,7 @@ const ButtonPanel = props => {
           <Button
             name={element}
             key={secondGroup.indexOf(element)}
-            handleClick={props.ClickHandler}
+            handleClick={element => props.clickHandler(element)}
           />
         ))}
       </div>
@@ -34,7 +34,7 @@ const ButtonPanel = props => {
           <Button
             name={element}
             key={thirdGroup.indexOf(element)}
-            handleClick={props.ClickHandler}
+            handleClick={element => props.clickHandler(element)}
           />
         ))}
       </div>
@@ -43,7 +43,7 @@ const ButtonPanel = props => {
           <Button
             name={element}
             key={fourthGroup.indexOf(element)}
-            handleClick={props.ClickHandler}
+            handleClick={element => props.clickHandler(element)}
           />
         ))}
       </div>
@@ -52,7 +52,7 @@ const ButtonPanel = props => {
           <Button
             name={element}
             key={fifthGroup.indexOf(element)}
-            handleClick={props.ClickHandler}
+            handleClick={element => props.clickHandler(element)}
           />
         ))}
       </div>
@@ -61,11 +61,11 @@ const ButtonPanel = props => {
 };
 
 ButtonPanel.propTypes = {
-  ClickHandler: PropTypes.func,
+  clickHandler: PropTypes.func,
 };
 
 ButtonPanel.defaultProps = {
-  ClickHandler: null,
+  clickHandler: null,
 };
 
 export default ButtonPanel;

@@ -14,7 +14,11 @@ const Operate = (num1 = null, num2 = null, operation) => {
     } else if (operation === '/') {
       result = new Big(num1).div(new Big(num2));
     } else if (operation === '%') {
-      result = new Big(num2).div(100);
+      if (num1) {
+        result = new Big(num1).div(100);
+      } else {
+        result = new Big(num2).div(100);
+      }
     }
   }
   return result.toString();
