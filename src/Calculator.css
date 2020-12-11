@@ -1,6 +1,5 @@
 body {
   background-color: rgb(245, 74, 103);
-  
 }
 
 button {
@@ -16,7 +15,7 @@ button:hover {
 }
 
 #root :first-child {
-text-align: center;
+  text-align: center;
 }
 
 p {
