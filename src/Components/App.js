@@ -25,9 +25,10 @@ class App extends React.Component {
     const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     if (operations.includes(e.target.value)) {
       this.setState(() => ({ operation: e.target.value }));
-    } else if (numbers.includes(e.target.value)
+    } else if ((numbers.includes(e.target.value)
     && !next
-    && !operation) {
+    && !operation)
+    || operation === 'AC') {
       const variable = [];
       variable.push(e.target.value);
       this.setState(() => ({ total: total + variable.toString() }));
