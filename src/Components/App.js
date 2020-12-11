@@ -31,11 +31,16 @@ class App extends React.Component {
 
   render() {
     const { total, next, operation } = this.state;
+    console.log(total, next, operation);
     let result;
     if (operation === null) {
       result = total;
-    } else if (operation === '+/-' && !next) {
-      result = total;
+    } else if (operation === '+/-') {
+      if (next === null || next === '0') {
+        result = total;
+      } else {
+        result = next;
+      }
     } else {
       result = next === null ? operation : next;
     }
