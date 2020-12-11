@@ -31,7 +31,6 @@ class App extends React.Component {
 
   render() {
     const { total, next, operation } = this.state;
-    console.log(total, next, operation);
     let result;
     if (operation === null) {
       result = total;
