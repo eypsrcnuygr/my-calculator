@@ -4,7 +4,8 @@ const Display = props => {
   const { result } = props;
   return (
     <>
-      {result}
+      <div className="Display">{result}</div>
+
     </>
   );
 };
@@ -14,7 +15,7 @@ Display.propTypes = {
 };
 
 Display.defaultProps = {
-  result: 'O',
+  result: '0',
 };
 
 export default Display;

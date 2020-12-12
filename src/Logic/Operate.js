@@ -1,8 +1,9 @@
 import Big from 'big.js';
 
+let result = Infinity;
+
 const Operate = (num1 = null, num2 = null, operation) => {
   const operations = ['+', '-', 'X', '/', '%'];
-  let result = Infinity;
   if (operations.includes(operation)) {
     if (operation === '+') {
       result = new Big(num1).plus(new Big(num2));
@@ -11,14 +12,20 @@ const Operate = (num1 = null, num2 = null, operation) => {
     } else if (operation === 'X') {
       result = new Big(num1).times(new Big(num2));
     } else if (operation === '/') {
-      result = new Big(num1).div(new Big(num2));
+      try {
+        result = new Big(num1).div(new Big(num2));
+      } catch (error) {
+        return 'Infinity';
+      }
     } else if (operation === '%') {
-      result = new Big(num1).div(100);
+      if (num1) {
+        result = new Big(num1).div(100);
+      } else {
+        result = new Big(num2).div(100);
+      }
     }
-  } else if (operation === '=') {
-    return result;
   }
-  return result;
+  return result.toString();
 };
 
 export default Operate;
