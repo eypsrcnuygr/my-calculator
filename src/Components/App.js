@@ -4,6 +4,7 @@ import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import Calculate from '../Logic/Calculate';
 import '../Calculator.css';
+import NavBar from './Navbar';
 
 const App = () => {
   const [state, setState] = useState({
@@ -41,6 +42,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <NavBar />
       <Display result={result} />
       <ButtonPanel clickHandler={handleClick} />
     </div>
