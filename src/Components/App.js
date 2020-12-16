@@ -1,56 +1,51 @@
-import React from 'react';
-import '../App.css';
+import React, { useState } from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import Calculate from '../Logic/Calculate';
 import '../Calculator.css';
+import NavBar from './Navbar';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      total: null,
-      next: null,
-      operation: null,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
+const App = () => {
+  const [state, setState] = useState({
+    total: null,
+    next: null,
+    operation: null,
+  });
 
-  handleClick(buttonName) {
-    const { total, next, operation } = this.state;
+  const handleClick = buttonName => {
+    const { total, next, operation } = state;
     const data = { total, next, operation };
 
     const result = Calculate(data, buttonName);
 
-    this.setState({
+    setState({
       total: result.total,
       next: result.next,
       operation: result.operation,
     });
-  }
+  };
 
-  render() {
-    const { total, next, operation } = this.state;
-    let result;
-    if (operation === null) {
+  const { total, next, operation } = state;
+  let result;
+  if (operation === null) {
+    result = total;
+  } else if (operation === '+/-') {
+    if (next === null || next === '0') {
       result = total;
-    } else if (operation === '+/-') {
-      if (next === null || next === '0') {
-        result = total;
-      } else {
-        result = next;
-      }
     } else {
-      result = next === null ? operation : next;
+      result = next;
     }
-
-    return (
-      <div className="app">
-        <Display result={result} />
-        <ButtonPanel clickHandler={this.handleClick} />
-      </div>
-    );
+  } else {
+    result = next === null ? operation : next;
   }
-}
+
+  return (
+    <div className="app">
+      <NavBar />
+      <Display result={result} />
+      <ButtonPanel clickHandler={handleClick} />
+    </div>
+  );
+};
 
 export default App;

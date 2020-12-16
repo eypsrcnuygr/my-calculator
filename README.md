@@ -38,6 +38,11 @@ Here is the live [link](https://my-calculator-sercan.herokuapp.com/)
 -   Email: [Eyüp Sercan UYGUR](sercanuygur@gmail.com)
 
 
+## Tests
+- There are 5 test files in the __tests__ folder.
+- Calculate-test.js is the file for testing the calculations.
+- The other 4 file are the test files that create jest snapshots.
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
