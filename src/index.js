@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
 import Home from './Components/Home';
